@@ -1,5 +1,6 @@
 using UnityEngine;
 using TRLM.AI.Perception;
+using TRLM.AI.Human;
 using TRLM.Companions;
 using TRLM.Core;
 
@@ -101,6 +102,22 @@ namespace TRLM.AI.Wolf
                 var companion = companions[i];
                 if (companion == null || companion.IsDead) continue;
                 Transform candidate = companion.transform;
+                if (!TrySeeTransform(candidate, out Vector3 candidatePosition)) continue;
+
+                float sqrDistance = (candidatePosition - transform.position).sqrMagnitude;
+                if (sqrDistance >= bestDistance) continue;
+                bestDistance = sqrDistance;
+                best = candidate;
+                bestPosition = candidatePosition;
+            }
+
+            // Island-security soldiers are prey too, so predators and armed guards actually fight.
+            var soldiers = SoldierAI.All;
+            for (int i = 0; i < soldiers.Count; i++)
+            {
+                var soldier = soldiers[i];
+                if (soldier == null || soldier.IsDead) continue;
+                Transform candidate = soldier.transform;
                 if (!TrySeeTransform(candidate, out Vector3 candidatePosition)) continue;
 
                 float sqrDistance = (candidatePosition - transform.position).sqrMagnitude;

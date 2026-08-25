@@ -9,10 +9,11 @@ using TRLM.Combat;
 namespace TRLM.UI
 {
     /// <summary>
-    /// Minimal always-on gameplay HUD, OnGUI-based to match DebugHUD's style. Shows survival
-    /// stats only when they're worth showing (not full / below a warning threshold), a toggled
-    /// inventory list, and short-lived objective notifications. Interaction prompting is already
-    /// owned by InteractionPromptUI — this class does not duplicate it.
+    /// Always-on gameplay HUD (IMGUI). Modernised vitals: rounded bars (via the IMGUI
+    /// rounded-corner DrawTexture overload), animated smooth fills, a delayed "ghost/chip"
+    /// damage layer on health, value-driven colour (green→amber→red), a low-health pulse and a
+    /// subtle glossy gradient — no Canvas/sprite assets required. Objective line, ammo, injury,
+    /// bleeding, notifications and the inventory list are unchanged.
     /// </summary>
     public class GameplayHUD : MonoBehaviour
     {
@@ -37,8 +38,7 @@ namespace TRLM.UI
         private string notificationText;
         private float notificationTimer;
 
-        // Per-frame string caches (Sprint 2 GC pass): OnGUI runs at least twice a frame and the
-        // interpolated captions below were allocating every pass. Rebuild only on value change.
+        // Per-frame string caches (GC pass): OnGUI runs at least twice a frame.
         private int cachedHp = int.MinValue;
         private string hpCaption = "";
         private int cachedSta = int.MinValue;
@@ -49,29 +49,38 @@ namespace TRLM.UI
         private bool cachedReloading;
         private string ammoCaption = "";
         private GUIStyle labelStyle;
-        private GUIStyle barLabelStyle;
+        private GUIStyle barCaptionStyle;
+        private GUIStyle barValueStyle;
         private GUIStyle bleedStyle;
         private GUIStyle notificationStyle;
-        private GUIStyle objectiveStyle; // Sprint 3 — small persistent current-objective line
+        private GUIStyle objectiveStyle;
         private Texture2D whiteTex;
+        private Texture2D glossTex; // vertical gradient for a glossy fill highlight
 
-        // Muted survival palette — desaturated so the HUD reads as instrumentation, not arcade UI.
-        private static readonly Color BarBackplate = new Color(0f, 0f, 0f, 0.45f);
-        private static readonly Color BarTrack = new Color(0.12f, 0.13f, 0.14f, 0.85f);
-        private static readonly Color HealthColor = new Color(0.62f, 0.22f, 0.18f, 0.95f);
-        private static readonly Color StaminaColor = new Color(0.72f, 0.66f, 0.45f, 0.95f);
-        private static readonly Color HungerColor = new Color(0.58f, 0.44f, 0.26f, 0.95f);
-        private static readonly Color ThirstColor = new Color(0.30f, 0.46f, 0.56f, 0.95f);
+        // Animated, smoothed fill state (0..1) so bars glide instead of snapping.
+        private float dispHp, ghostHp = 1f, dispSta = 1f, dispHunger = 1f, dispThirst = 1f;
+        private bool statsInit;
+
+        // Modern muted-survival palette.
+        private static readonly Color PanelPlate    = new Color(0.05f, 0.06f, 0.07f, 0.62f);
+        private static readonly Color PanelEdge      = new Color(1f, 1f, 1f, 0.06f);
+        private static readonly Color BarTrack        = new Color(0.10f, 0.11f, 0.13f, 0.92f);
+        private static readonly Color BarTrackEdge    = new Color(0f, 0f, 0f, 0.55f);
+        private static readonly Color GhostColor      = new Color(0.85f, 0.32f, 0.22f, 0.55f); // health chip trail
+        private static readonly Color HealthHigh      = new Color(0.36f, 0.72f, 0.36f, 1f);
+        private static readonly Color HealthMid       = new Color(0.86f, 0.72f, 0.28f, 1f);
+        private static readonly Color HealthLow       = new Color(0.82f, 0.26f, 0.20f, 1f);
+        private static readonly Color StaminaColor    = new Color(0.80f, 0.68f, 0.32f, 1f);
+        private static readonly Color HungerColor      = new Color(0.64f, 0.47f, 0.27f, 1f);
+        private static readonly Color ThirstColor      = new Color(0.34f, 0.58f, 0.72f, 1f);
+        private static readonly Color CaptionColor     = new Color(0.86f, 0.87f, 0.85f, 0.85f);
+        private static readonly Color ValueColor       = new Color(1f, 1f, 1f, 0.95f);
 
         private void OnEnable()
         {
             if (input != null)
             {
                 input.InventoryPressed += ToggleInventory;
-                // "Use" is FirePressed (left mouse) reused ONLY while the inventory panel is
-                // open — gated by inventoryOpen below so it never conflicts with a future actual
-                // weapon-fire use of the same event; documented per sprint instructions rather
-                // than adding a new raw keybind.
                 input.FirePressed += HandleUsePressed;
             }
             if (objectiveSystem != null) objectiveSystem.OnObjectiveChanged += HandleObjectiveChanged;
@@ -87,9 +96,6 @@ namespace TRLM.UI
             if (objectiveSystem != null) objectiveSystem.OnObjectiveChanged -= HandleObjectiveChanged;
         }
 
-        /// <summary>Sprint 07 — lets WeaponController gate weapon-fire input off while the
-        /// inventory panel is open, so LMB doesn't fire a weapon and use an inventory item in
-        /// the same click.</summary>
         public bool InventoryOpen => inventoryOpen;
 
         private void ToggleInventory() => inventoryOpen = !inventoryOpen;
@@ -106,7 +112,6 @@ namespace TRLM.UI
             notificationTimer = notificationSeconds;
         }
 
-        // Sprint 3 — short player-facing objective text for the persistent HUD line (UI is English).
         private static string ObjectiveLabel(ObjectiveStep step)
         {
             switch (step)
@@ -136,28 +141,111 @@ namespace TRLM.UI
         private void Update()
         {
             if (notificationTimer > 0f) notificationTimer -= Time.deltaTime;
+
+            // Smooth the vitals toward their real values so the bars glide.
+            float hp = health  != null ? Mathf.Clamp01(health.CurrentHealth   / Mathf.Max(1f, health.MaxHealth))    : 0f;
+            float st = stamina != null ? Mathf.Clamp01(stamina.CurrentStamina / Mathf.Max(1f, stamina.MaxStamina))  : 0f;
+            float hu = hunger  != null ? Mathf.Clamp01(hunger.Hunger / 100f) : 0f;
+            float th = thirst  != null ? Mathf.Clamp01(thirst.Thirst / 100f) : 0f;
+
+            if (!statsInit) { dispHp = ghostHp = hp; dispSta = st; dispHunger = hu; dispThirst = th; statsInit = true; }
+
+            float k = 1f - Mathf.Exp(-10f * Time.deltaTime); // frame-rate independent lerp
+            dispHp     = Mathf.Lerp(dispHp, hp, k);
+            dispSta    = Mathf.Lerp(dispSta, st, k);
+            dispHunger = Mathf.Lerp(dispHunger, hu, k);
+            dispThirst = Mathf.Lerp(dispThirst, th, k);
+
+            // Ghost trails behind on damage, snaps forward on heal.
+            if (ghostHp > dispHp) ghostHp = Mathf.Lerp(ghostHp, dispHp, 1f - Mathf.Exp(-3f * Time.deltaTime));
+            else ghostHp = dispHp;
         }
 
-        /// <summary>Draws one instrumentation bar: dark track, muted fill, small caption on top.</summary>
-        private void DrawBar(float x, float y, float width, float height, float fraction, Color fill, string caption)
+        private static Color HealthGradient(float f)
         {
-            GUI.color = BarTrack;
-            GUI.DrawTexture(new Rect(x, y, width, height), whiteTex);
-            GUI.color = fill;
-            GUI.DrawTexture(new Rect(x + 1, y + 1, (width - 2) * Mathf.Clamp01(fraction), height - 2), whiteTex);
-            GUI.color = Color.white;
-            if (!string.IsNullOrEmpty(caption))
-                GUI.Label(new Rect(x + 4, y - 1, width - 8, height + 2), caption, barLabelStyle);
+            if (f >= 0.6f) return Color.Lerp(HealthMid, HealthHigh, (f - 0.6f) / 0.4f);
+            if (f >= 0.3f) return Color.Lerp(HealthLow, HealthMid, (f - 0.3f) / 0.3f);
+            return HealthLow;
         }
 
-        private void OnGUI()
+        /// <summary>Draws a filled rounded rect using the IMGUI rounded-corner overload.</summary>
+        private void RoundRect(Rect r, Color color, float radius)
+        {
+            GUI.DrawTexture(r, whiteTex, ScaleMode.StretchToFill, true, 0f, color, Vector4.zero,
+                new Vector4(radius, radius, radius, radius));
+        }
+
+        private void RoundBorder(Rect r, Color color, float radius, float width)
+        {
+            GUI.DrawTexture(r, whiteTex, ScaleMode.StretchToFill, true, 0f, color,
+                new Vector4(width, width, width, width), new Vector4(radius, radius, radius, radius));
+        }
+
+        /// <summary>Modern bar: track + ghost + gradient fill + gloss + border + caption/value.</summary>
+        private void DrawModernBar(float x, float y, float width, float height,
+            float fraction, float ghost, Color fill, string caption, string value, bool pulse)
+        {
+            float r = height * 0.5f;
+            Rect track = new Rect(x, y, width, height);
+            // Track
+            RoundRect(track, BarTrack, r);
+            RoundBorder(track, BarTrackEdge, r, 1f);
+
+            float inset = 2f;
+            float innerW = width - inset * 2f;
+            float innerH = height - inset * 2f;
+            float ir = innerH * 0.5f;
+
+            // Ghost (delayed damage) layer under the fill.
+            if (ghost > fraction + 0.001f)
+            {
+                float gw = Mathf.Max(innerH, innerW * ghost);
+                RoundRect(new Rect(x + inset, y + inset, gw, innerH), GhostColor, ir);
+            }
+
+            // Main fill.
+            if (fraction > 0.001f)
+            {
+                float fw = Mathf.Max(innerH, innerW * fraction);
+                Rect fr = new Rect(x + inset, y + inset, fw, innerH);
+                RoundRect(fr, fill, ir);
+                // Glossy top highlight (upper half, subtle white gradient).
+                var gloss = new Color(1f, 1f, 1f, 0.14f);
+                GUI.DrawTexture(new Rect(fr.x, fr.y, fr.width, fr.height * 0.5f), glossTex,
+                    ScaleMode.StretchToFill, true, 0f, gloss, Vector4.zero, new Vector4(ir, ir, 0f, 0f));
+            }
+
+            // Low-health pulse: a soft red rim.
+            if (pulse)
+            {
+                float p = Mathf.Sin(Time.unscaledTime * 6f) * 0.5f + 0.5f;
+                RoundBorder(track, new Color(0.9f, 0.2f, 0.15f, 0.25f + p * 0.5f), r, 2f);
+            }
+
+            // Caption (left) + value (right).
+            if (!string.IsNullOrEmpty(caption))
+                GUI.Label(new Rect(x + 10f, y - 1f, width - 20f, height + 2f), caption, barCaptionStyle);
+            if (!string.IsNullOrEmpty(value))
+                GUI.Label(new Rect(x, y - 1f, width - 10f, height + 2f), value, barValueStyle);
+        }
+
+        private void EnsureResources()
         {
             labelStyle ??= new GUIStyle(GUI.skin.label) { fontSize = 14, normal = { textColor = Color.white } };
-            barLabelStyle ??= new GUIStyle(GUI.skin.label)
+            barCaptionStyle ??= new GUIStyle(GUI.skin.label)
             {
-                fontSize = 11,
-                alignment = TextAnchor.MiddleLeft,
-                normal = { textColor = new Color(0.92f, 0.92f, 0.90f, 0.95f) }
+                fontSize = 11, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleLeft,
+                normal = { textColor = CaptionColor }
+            };
+            barValueStyle ??= new GUIStyle(GUI.skin.label)
+            {
+                fontSize = 11, fontStyle = FontStyle.Bold, alignment = TextAnchor.MiddleRight,
+                normal = { textColor = ValueColor }
+            };
+            objectiveStyle ??= new GUIStyle(GUI.skin.label)
+            {
+                fontSize = 13, alignment = TextAnchor.MiddleLeft,
+                normal = { textColor = new Color(0.87f, 0.83f, 0.68f, 0.95f) }
             };
             if (whiteTex == null)
             {
@@ -165,80 +253,88 @@ namespace TRLM.UI
                 whiteTex.SetPixel(0, 0, Color.white);
                 whiteTex.Apply();
             }
+            if (glossTex == null)
+            {
+                glossTex = new Texture2D(1, 2);
+                glossTex.SetPixel(0, 0, new Color(1f, 1f, 1f, 0f));   // bottom transparent
+                glossTex.SetPixel(0, 1, new Color(1f, 1f, 1f, 1f));   // top white
+                glossTex.wrapMode = TextureWrapMode.Clamp;
+                glossTex.Apply();
+            }
+        }
 
-            // ---- Sprint 3: small persistent current-objective line, top-left --------------------
+        private void OnGUI()
+        {
+            EnsureResources();
+
+            // ---- Persistent current-objective line, top-left (rounded plate) --------------------
             if (objectiveSystem != null)
             {
-                objectiveStyle ??= new GUIStyle(GUI.skin.label)
-                {
-                    fontSize = 13,
-                    alignment = TextAnchor.MiddleLeft,
-                    normal = { textColor = new Color(0.87f, 0.83f, 0.68f, 0.95f) }
-                };
-                string objLine = "Objective:  " + ObjectiveLabel(objectiveSystem.Current);
-                float ow = Mathf.Min(objectiveStyle.CalcSize(new GUIContent(objLine)).x + 20f, 480f);
-                GUI.color = BarBackplate;
-                GUI.DrawTexture(new Rect(16, 16, ow, 24), whiteTex);
-                GUI.color = Color.white;
-                GUI.Label(new Rect(24, 17, ow - 14, 22), objLine, objectiveStyle);
+                string objLine = "OBJECTIVE   " + ObjectiveLabel(objectiveSystem.Current);
+                float ow = Mathf.Min(objectiveStyle.CalcSize(new GUIContent(objLine)).x + 28f, 500f);
+                RoundRect(new Rect(16, 16, ow, 28), PanelPlate, 8f);
+                RoundBorder(new Rect(16, 16, ow, 28), PanelEdge, 8f, 1f);
+                GUI.Label(new Rect(28, 17, ow - 20, 26), objLine, objectiveStyle);
             }
 
             const int lineHeight = 20;
-            const float barWidth = 220f;
-            const float barHeight = 16f;
-            const float barGap = 5f;
+            const float barWidth = 230f;
+            const float barHeight = 15f;
+            const float barGap = 7f;
 
-            // ---- Persistent vitals block, bottom-left --------------------------------------
+            // ---- Vitals block, bottom-left (rounded panel) --------------------------------------
             int barCount = (health != null ? 1 : 0) + (stamina != null ? 1 : 0)
                          + (hunger != null ? 1 : 0) + (thirst != null ? 1 : 0);
-            float blockHeight = barCount * (barHeight + barGap) + 14f;
-            float bx = 20f;
-            float by = Screen.height - blockHeight - 18f;
+            float pad = 12f;
+            float blockHeight = barCount * (barHeight + barGap) - barGap + pad * 2f;
+            float bx = 22f;
+            float by = Screen.height - blockHeight - 22f;
 
-            GUI.color = BarBackplate;
-            GUI.DrawTexture(new Rect(bx - 8, by - 7, barWidth + 16, blockHeight), whiteTex);
-            GUI.color = Color.white;
+            RoundRect(new Rect(bx - pad, by - pad, barWidth + pad * 2f, blockHeight), PanelPlate, 10f);
+            RoundBorder(new Rect(bx - pad, by - pad, barWidth + pad * 2f, blockHeight), PanelEdge, 10f, 1f);
 
             float cursorY = by;
             if (health != null)
             {
                 int hp = Mathf.RoundToInt(health.CurrentHealth);
-                if (hp != cachedHp) { cachedHp = hp; hpCaption = "HP  " + hp; }
-                DrawBar(bx, cursorY, barWidth, barHeight, health.CurrentHealth / Mathf.Max(1f, health.MaxHealth), HealthColor, hpCaption);
+                if (hp != cachedHp) { cachedHp = hp; hpCaption = hp.ToString(); }
+                bool low = dispHp < 0.28f;
+                DrawModernBar(bx, cursorY, barWidth, barHeight, dispHp, ghostHp, HealthGradient(dispHp), "HEALTH", hpCaption, low);
                 cursorY += barHeight + barGap;
             }
             if (stamina != null)
             {
                 int sta = Mathf.RoundToInt(stamina.CurrentStamina);
-                if (sta != cachedSta) { cachedSta = sta; staCaption = "STA " + sta; }
-                DrawBar(bx, cursorY, barWidth, barHeight, stamina.CurrentStamina / Mathf.Max(1f, stamina.MaxStamina), StaminaColor, staCaption);
+                if (sta != cachedSta) { cachedSta = sta; staCaption = sta.ToString(); }
+                DrawModernBar(bx, cursorY, barWidth, barHeight, dispSta, 0f, StaminaColor, "STAMINA", staCaption, false);
                 cursorY += barHeight + barGap;
             }
             if (hunger != null)
             {
-                DrawBar(bx, cursorY, barWidth, barHeight, hunger.Hunger / 100f, HungerColor,
-                        hunger.Hunger <= hungerThirstWarning ? "FOOD — LOW" : "FOOD");
+                DrawModernBar(bx, cursorY, barWidth, barHeight, dispHunger, 0f, HungerColor,
+                    hunger.Hunger <= hungerThirstWarning ? "FOOD  (LOW)" : "FOOD", Mathf.RoundToInt(hunger.Hunger).ToString(),
+                    hunger.Hunger <= hungerThirstWarning);
                 cursorY += barHeight + barGap;
             }
             if (thirst != null)
             {
-                DrawBar(bx, cursorY, barWidth, barHeight, thirst.Thirst / 100f, ThirstColor,
-                        thirst.Thirst <= hungerThirstWarning ? "WATER — LOW" : "WATER");
+                DrawModernBar(bx, cursorY, barWidth, barHeight, dispThirst, 0f, ThirstColor,
+                    thirst.Thirst <= hungerThirstWarning ? "WATER  (LOW)" : "WATER", Mathf.RoundToInt(thirst.Thirst).ToString(),
+                    thirst.Thirst <= hungerThirstWarning);
                 cursorY += barHeight + barGap;
             }
 
             // ---- Contextual text lines above the vitals block ------------------------------
-            int y = (int)by - 26;
+            int y = (int)(by - pad) - 26;
 
             if (flashlight != null && (flashlight.IsOn || flashlight.BatteryPercent < 20f))
             {
                 int bat = Mathf.RoundToInt(flashlight.BatteryPercent);
                 if (bat != cachedBattery) { cachedBattery = bat; batteryCaption = "Battery: " + bat + "%"; }
-                GUI.Label(new Rect(20, y, 260, lineHeight), batteryCaption, labelStyle);
+                GUI.Label(new Rect(22, y, 260, lineHeight), batteryCaption, labelStyle);
                 y -= lineHeight;
             }
 
-            // Sprint 07 — small additive ammo readout for whichever weapon is currently drawn.
             if (playerEquipment != null && playerEquipment.ActiveSlot.HasValue)
             {
                 var def = playerEquipment.GetActiveDefinition();
@@ -252,19 +348,17 @@ namespace TRLM.UI
                         ammoCaption = def.displayName + ": " + state.currentMagazine + "/" + def.magazineCapacity
                                       + (state.isReloading ? " (Reloading...)" : "");
                     }
-                    GUI.Label(new Rect(20, y, 260, lineHeight), ammoCaption, labelStyle);
+                    GUI.Label(new Rect(22, y, 260, lineHeight), ammoCaption, labelStyle);
                     y -= lineHeight;
                 }
             }
 
-            // Sprint 07 (A2, Section 30) — small additive injury/bleeding status block, gated the
-            // same threshold-based way the rest of this HUD already is (no permanent clutter).
             if (injurySystem != null && injurySystem.HasAnyInjury())
             {
                 foreach (var kvp in injurySystem.AllSeverities())
                 {
                     if (kvp.Value <= 0f) continue;
-                    GUI.Label(new Rect(20, y, 260, lineHeight), $"Injured: {kvp.Key}", labelStyle);
+                    GUI.Label(new Rect(22, y, 260, lineHeight), $"Injured: {kvp.Key}", labelStyle);
                     y -= lineHeight;
                 }
             }
@@ -272,30 +366,41 @@ namespace TRLM.UI
             if (statusEffects != null && statusEffects.HasEffect("Bleeding"))
             {
                 bleedStyle ??= new GUIStyle(labelStyle) { normal = { textColor = new Color(0.85f, 0.25f, 0.2f) } };
-                GUI.Label(new Rect(20, y, 260, lineHeight), "BLEEDING", bleedStyle);
+                GUI.Label(new Rect(22, y, 260, lineHeight), "BLEEDING", bleedStyle);
                 y -= lineHeight;
             }
 
             if (notificationTimer > 0f && !string.IsNullOrEmpty(notificationText))
             {
                 notificationStyle ??= new GUIStyle(labelStyle) { fontSize = 18, alignment = TextAnchor.UpperCenter };
-                GUI.Label(new Rect((Screen.width - 400f) * 0.5f, 20, 400f, 30f), notificationText, notificationStyle);
+                float a = Mathf.Clamp01(notificationTimer / Mathf.Max(0.01f, notificationSeconds));
+                float w = 420f;
+                RoundRect(new Rect((Screen.width - w) * 0.5f, 18, w, 34), new Color(0.05f, 0.06f, 0.07f, 0.6f * a), 9f);
+                var prev = notificationStyle.normal.textColor;
+                notificationStyle.normal.textColor = new Color(1f, 0.96f, 0.85f, a);
+                GUI.Label(new Rect((Screen.width - w) * 0.5f, 24, w, 28f), notificationText, notificationStyle);
+                notificationStyle.normal.textColor = prev;
             }
 
             if (inventoryOpen && inventory != null)
             {
-                float panelWidth = 260f;
-                float panelHeight = 24f + inventory.Slots.Count * lineHeight;
-                Rect panel = new Rect(Screen.width - panelWidth - 20, 20, panelWidth, panelHeight);
-                GUI.Box(panel, "Inventory ([ ] select, LMB use, G drop, I close)");
+                float panelWidth = 270f;
+                float panelHeight = 40f + inventory.Slots.Count * lineHeight;
+                Rect panel = new Rect(Screen.width - panelWidth - 22, 22, panelWidth, panelHeight);
+                RoundRect(panel, PanelPlate, 10f);
+                RoundBorder(panel, PanelEdge, 10f, 1f);
+                GUI.Label(new Rect(panel.x + 12, panel.y + 8, panelWidth - 24, lineHeight),
+                    "INVENTORY  ([ ] select · LMB use · G drop · I close)", barCaptionStyle);
 
-                int slotY = 44;
+                int slotY = 34;
                 for (int i = 0; i < inventory.Slots.Count; i++)
                 {
                     var slot = inventory.Slots[i];
-                    string marker = i == inventory.SelectedSlotIndex ? "> " : "  ";
-                    string line = slot.IsEmpty ? "-- empty --" : $"{slot.item.displayName} x{slot.count}";
-                    GUI.Label(new Rect(panel.x + 10, panel.y + slotY, panelWidth - 20, lineHeight), marker + line, labelStyle);
+                    bool sel = i == inventory.SelectedSlotIndex;
+                    if (sel) RoundRect(new Rect(panel.x + 8, panel.y + slotY - 1, panelWidth - 16, lineHeight), new Color(1f, 1f, 1f, 0.06f), 5f);
+                    string marker = sel ? "▸ " : "   ";
+                    string line = slot.IsEmpty ? "— empty —" : $"{slot.item.displayName}  ×{slot.count}";
+                    GUI.Label(new Rect(panel.x + 14, panel.y + slotY, panelWidth - 28, lineHeight), marker + line, labelStyle);
                     slotY += lineHeight;
                 }
             }

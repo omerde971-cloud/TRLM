@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using TRLM.AI.Perception;
@@ -12,6 +13,10 @@ namespace TRLM.AI.Human
     public class SoldierAI : MonoBehaviour, IDamageable
     {
         public enum State { Patrol, Suspicious, Investigate, Alert, Combat, Search, Return }
+
+        /// <summary>Live soldiers, so predators (WolfPerception) can treat them as prey without a
+        /// scene scan. Maintained in OnEnable/OnDisable, mirroring CompanionAI.All.</summary>
+        public static readonly List<SoldierAI> All = new List<SoldierAI>();
 
         [Header("Route")]
         [SerializeField] private Transform[] patrolPoints;
@@ -41,6 +46,8 @@ namespace TRLM.AI.Human
         private float stateTimer;
         private float attackTimer;
         private int patrolIndex;
+        private Transform playerTransform;
+        private float retargetTimer;
 
         public State CurrentState { get; private set; } = State.Patrol;
         public bool IsDead => health != null && health.IsDead;
@@ -58,18 +65,36 @@ namespace TRLM.AI.Human
         {
             NoiseEvents.OnNoise += HandleNoise;
             if (health != null) health.OnDeath += HandleDeath;
+            if (!All.Contains(this)) All.Add(this);
         }
 
         private void OnDisable()
         {
             NoiseEvents.OnNoise -= HandleNoise;
             if (health != null) health.OnDeath -= HandleDeath;
+            All.Remove(this);
         }
 
         private void Start()
         {
-            target = GameObject.FindGameObjectWithTag("Player")?.transform;
+            playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
+            target = playerTransform;
             EnterState(State.Patrol);
+        }
+
+        /// <summary>Island security is hostile to intruders (the player) AND to predators. Pick the
+        /// closest hostile so a soldier engages a charging wolf/bear as readily as the player.</summary>
+        private void RefreshHostileTarget()
+        {
+            var predator = PredatorRegistry.FindNearest(transform.position, sightRange, menacingOnly: false);
+            Transform predatorT = predator != null ? predator.PredatorTransform : null;
+
+            if (predatorT == null) { if (target == null) target = playerTransform; return; }
+            if (playerTransform == null) { target = predatorT; return; }
+
+            float dPred = (predatorT.position - transform.position).sqrMagnitude;
+            float dPlayer = (playerTransform.position - transform.position).sqrMagnitude;
+            target = dPred < dPlayer ? predatorT : playerTransform;
         }
 
         private void Update()
@@ -79,6 +104,11 @@ namespace TRLM.AI.Human
             if (heardTimer > 0f) heardTimer -= Time.deltaTime;
             if (attackTimer > 0f) attackTimer -= Time.deltaTime;
             stateTimer += Time.deltaTime;
+
+            // Re-pick the closest hostile (player or nearest predator) a few times a second so a
+            // soldier will break off to fight an approaching wolf/bear.
+            retargetTimer -= Time.deltaTime;
+            if (retargetTimer <= 0f) { retargetTimer = 0.35f; RefreshHostileTarget(); }
 
             if (CanSeeTarget(out Vector3 seenPosition))
             {
