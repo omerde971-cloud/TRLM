@@ -28,4 +28,4 @@ MonoBehaviour:
   recoilYawRandom: 0.8
   baseSwayDegrees: 1.2
   noiseLoudness: 65
-  placeholderVisualPrefab: {fileID: 0}
+  placeholderVisualPrefab: {fileID: 5714248371855744787, guid: f9a161e4a0ff6c24e861ff40850f8d64, type: 3}

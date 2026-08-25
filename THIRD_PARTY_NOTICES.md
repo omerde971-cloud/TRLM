@@ -45,11 +45,13 @@ unverified is left intentionally generic.
 | Gobkit Free Animal Pack (Boar, Goat low-poly rigged) | Wildlife / models | **Gobkit** — gobkit.com — **CC0 1.0** | CC0 public domain. `PF_Boar` / `PF_MountainGoat` reference these meshes (excluded binaries). |
 | Poly Haven — cave/cliff PBR textures (`cliff_side`, `brown_mud_rocks_01`) & rock models (`boulder_01`, `coastal_cliff_01`) | Environment / textures + models | **Poly Haven** — polyhaven.com — **CC0 1.0** | CC0 public domain. Cave `Sprint11` materials reference these maps (excluded binaries). |
 | Cave ambience / drips / impacts / creature & shotgun SFX | Audio (SFX) | **Kenney** (kenney.nl) + OpenGameArt contributors (JaggedStone, qubodup, rubberduck, zer0_sol) — **CC0 1.0** | CC0 public domain; excluded here per the audio-binary exclusion policy. |
+| Weapon models (shotgun, pistol) | Weapons / models | **Meshy.ai** — user-generated (Text→Image→3D, PRO plan, commercial use per Meshy ToS) | User-owned AI generations; decimated to ~50k tris via UnityMeshSimplifier. `PF_WPN_Shotgun` / `PF_WPN_Pistol` reference these meshes (excluded binaries). |
 | Voice-over (VO) & music | Audio | Managed separately | Not generated/committed; excluded from OSS release. |
 
 ## Open-source package dependencies (fetched via UPM, not redistributed here)
 
 * **glTF Fast (`com.unity.cloud.gltfast`)** — Unity Technologies / Andreas Atteneder — **Apache-2.0**. Declared in `Packages/manifest.json`; the Unity Package Manager fetches it automatically on project open. Required to import the CC0 `.glb`/`.gltf` models referenced above. Its source is not copied into this repository.
+* **UnityMeshSimplifier (`com.whinarn.unitymeshsimplifier`)** — Mattias Edlund (Whinarn) — **MIT**. Git-URL dependency in `Packages/manifest.json`; fetched by UPM. Used to decimate the high-poly AI-generated weapon meshes to game-ready triangle counts. Source not copied into this repository.
 
 For fuller technical detail on the third-party assets and how they were integrated, see
 `Documents/AssetRegistry.md` and `Documents/P0_Asset_Audit.md`, which are included in this
