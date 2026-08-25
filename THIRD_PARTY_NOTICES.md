@@ -45,7 +45,7 @@ unverified is left intentionally generic.
 | Gobkit Free Animal Pack (Boar, Goat low-poly rigged) | Wildlife / models | **Gobkit** — gobkit.com — **CC0 1.0** | CC0 public domain. `PF_Boar` / `PF_MountainGoat` reference these meshes (excluded binaries). |
 | Poly Haven — cave/cliff PBR textures (`cliff_side`, `brown_mud_rocks_01`) & rock models (`boulder_01`, `coastal_cliff_01`) | Environment / textures + models | **Poly Haven** — polyhaven.com — **CC0 1.0** | CC0 public domain. Cave `Sprint11` materials reference these maps (excluded binaries). |
 | Cave ambience / drips / impacts / creature & shotgun SFX | Audio (SFX) | **Kenney** (kenney.nl) + OpenGameArt contributors (JaggedStone, qubodup, rubberduck, zer0_sol) — **CC0 1.0** | CC0 public domain; excluded here per the audio-binary exclusion policy. |
-| Weapon models (shotgun, pistol) | Weapons / models | **Meshy.ai** — user-generated (Text→Image→3D, PRO plan, commercial use per Meshy ToS) | User-owned AI generations; decimated to ~50k tris via UnityMeshSimplifier. `PF_WPN_Shotgun` / `PF_WPN_Pistol` reference these meshes (excluded binaries). |
+| Weapon & wildlife models (shotgun, pistol, bear, snake) | Weapons + wildlife / models | **Meshy.ai** — user-generated (Text→Image→3D, PRO plan, commercial use per Meshy ToS) | User-owned AI generations; decimated to ~50k tris via UnityMeshSimplifier. `PF_WPN_Shotgun` / `PF_WPN_Pistol` / `PF_Bear` / `PF_Snake` reference these meshes (excluded binaries). |
 | Voice-over (VO) & music | Audio | Managed separately | Not generated/committed; excluded from OSS release. |
 
 ## Open-source package dependencies (fetched via UPM, not redistributed here)

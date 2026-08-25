@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpeciesProfile_Snake
   m_EditorClassIdentifier: TRLM.Runtime::TRLM.AI.Wildlife.WildlifeSpeciesProfile
   speciesName: Snake
-  animalPrefab: {fileID: 0}
+  animalPrefab: {fileID: 7873791134791826800, guid: 4304bbc9d52e83c49b06167f4538ffff, type: 3}
   minPopulation: 1
   maxPopulation: 2
   spawnChance: 0.4
