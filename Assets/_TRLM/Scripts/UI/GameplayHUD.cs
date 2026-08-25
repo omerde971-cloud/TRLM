@@ -52,6 +52,7 @@ namespace TRLM.UI
         private GUIStyle barLabelStyle;
         private GUIStyle bleedStyle;
         private GUIStyle notificationStyle;
+        private GUIStyle objectiveStyle; // Sprint 3 — small persistent current-objective line
         private Texture2D whiteTex;
 
         // Muted survival palette — desaturated so the HUD reads as instrumentation, not arcade UI.
@@ -101,8 +102,35 @@ namespace TRLM.UI
 
         private void HandleObjectiveChanged(ObjectiveStep step)
         {
-            notificationText = $"Objective: {step}";
+            notificationText = $"New objective: {ObjectiveLabel(step)}";
             notificationTimer = notificationSeconds;
+        }
+
+        // Sprint 3 — short player-facing objective text for the persistent HUD line (UI is English).
+        private static string ObjectiveLabel(ObjectiveStep step)
+        {
+            switch (step)
+            {
+                case ObjectiveStep.PreparationComplete: return "Prepare to leave";
+                case ObjectiveStep.RowToIsland: return "Row to the island";
+                case ObjectiveStep.ReachLandingZone: return "Reach the shore";
+                case ObjectiveStep.EnterCoastalForest: return "Enter the coastal forest";
+                case ObjectiveStep.ReachAbandonedHouse: return "Find the abandoned house";
+                case ObjectiveStep.SearchHouse: return "Search the house";
+                case ObjectiveStep.AcquireEssentialLoot: return "Gather food and water";
+                case ObjectiveStep.NightBegins: return "Survive the night";
+                case ObjectiveStep.WolfThreat: return "A wolf is near — stay alert";
+                case ObjectiveStep.ReachSafeHouse: return "Reach the safe house";
+                case ObjectiveStep.LightFire: return "Light the fire";
+                case ObjectiveStep.Sleep: return "Rest until morning";
+                case ObjectiveStep.WakeNextMorning: return "A new day begins";
+                case ObjectiveStep.SliceComplete: return "Head for the mountain";
+                case ObjectiveStep.ReachCaveEntrance: return "Reach the cave entrance";
+                case ObjectiveStep.EnterCave: return "Enter the cave";
+                case ObjectiveStep.RecoverFirstProphecyPage: return "Search the cave for the prophecy";
+                case ObjectiveStep.CaveThresholdComplete: return "Press deeper into the mountain";
+                default: return step.ToString();
+            }
         }
 
         private void Update()
@@ -136,6 +164,23 @@ namespace TRLM.UI
                 whiteTex = new Texture2D(1, 1);
                 whiteTex.SetPixel(0, 0, Color.white);
                 whiteTex.Apply();
+            }
+
+            // ---- Sprint 3: small persistent current-objective line, top-left --------------------
+            if (objectiveSystem != null)
+            {
+                objectiveStyle ??= new GUIStyle(GUI.skin.label)
+                {
+                    fontSize = 13,
+                    alignment = TextAnchor.MiddleLeft,
+                    normal = { textColor = new Color(0.87f, 0.83f, 0.68f, 0.95f) }
+                };
+                string objLine = "Objective:  " + ObjectiveLabel(objectiveSystem.Current);
+                float ow = Mathf.Min(objectiveStyle.CalcSize(new GUIContent(objLine)).x + 20f, 480f);
+                GUI.color = BarBackplate;
+                GUI.DrawTexture(new Rect(16, 16, ow, 24), whiteTex);
+                GUI.color = Color.white;
+                GUI.Label(new Rect(24, 17, ow - 14, 22), objLine, objectiveStyle);
             }
 
             const int lineHeight = 20;
