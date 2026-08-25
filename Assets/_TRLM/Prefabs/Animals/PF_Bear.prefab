@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5926318526362186929}
   - component: {fileID: 3750132531160901287}
   - component: {fileID: 2484194274096209541}
+  - component: {fileID: 551378841666637892}
   m_Layer: 0
   m_Name: Visual_Bear
   m_TagString: Untagged
@@ -90,6 +91,22 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &551378841666637892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517100862619014424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad88a3fb07e09b43844f84de8570531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.AI.Wildlife.CreatureIdleMotion
+  breathAmplitude: 0.015
+  breathSpeed: 1.1
+  swayDegrees: 0.8
+  swaySpeed: 0.7
 --- !u!1001 &7408771219983093128
 PrefabInstance:
   m_ObjectHideFlags: 0
