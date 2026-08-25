@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69551e36afcdc0b409ee80357c6e2a1e, type: 3}
+  m_Name: SpeciesProfile_Stag
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.AI.Wildlife.WildlifeSpeciesProfile
+  speciesName: Stag
+  animalPrefab: {fileID: 4095608477431527833, guid: 22ae3beea2fce874081f5eb729fa62e1, type: 3}
+  minPopulation: 1
+  maxPopulation: 2
+  spawnChance: 0.5
+  spawnCooldownSeconds: 30
+  respawnDelaySeconds: 300
+  maxActiveAnimalsGlobally: 6
+  minDistanceFromPlayer: 22
+  despawnDistance: 140
+  preferredPatrolRadius: 25
+  aggressionModifier: 0
+  dayActivityMultiplier: 1.1
+  nightActivityMultiplier: 0.4
+  rainModifier: 1

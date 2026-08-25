@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74d7efa72bfc7e41879653d0df46575, type: 3}
+  m_Name: ProphecyPage_TornFirstLeaf
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Notebook.ProphecyPage
+  id: page_cave_torn_first
+  titleTurkish: "Y\u0131rt\u0131k \u0130lk Yaprak"
+  titleEnglish: The Torn First Leaf
+  bodyTurkish: "K\u0131y\u0131daki i\u015Fareti biz b\u0131rakt\u0131k \u2014 da\u011Fdaki
+    ma\u011Faray\u0131 bulan, bizi de bulsun diye. Semboller yol de\u011Fil; hat\u0131rlatmad\u0131r.
+    Oraya vard\u0131\u011F\u0131n\u0131zda anlayacaks\u0131n\u0131z: biz ilk gelenler
+    de\u011Fildik."
+  bodyEnglish: "We left the marker on the coast \u2014 so that whoever finds the
+    cave in the mountain would find us too. The symbols are not a route; they are
+    a reminder. When you reach that place you will understand: we were not the first
+    to come."
+  illustration: {fileID: 0}
+  orderIndex: 0
+  isKeyProphecy: 1
+  discoveryLine:
+    id: nb_first_page_found
+    speaker: 0
+    turkishText: "Birileri bunu bizim i\xE7in b\u0131rakm\u0131\u015F... ya da bizden
+      \xF6ncekiler i\xE7in."
+    englishSubtitle: Someone left this for us... or for the ones before us.
+    emotion: 0
+    delivery: 
+    scene: 
+    trigger: 
+    audioClip: {fileID: 0}
+    durationOverride: 0
+    subtitlePriority: 20
+    oneShot: 1

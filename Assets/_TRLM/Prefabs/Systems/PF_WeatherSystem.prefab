@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1225805070457409658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3803619248734702383}
+  - component: {fileID: 7158115340365400234}
+  m_Layer: 0
+  m_Name: PF_WeatherSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3803619248734702383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225805070457409658}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7158115340365400234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225805070457409658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924e960bbc9e5ee47a39e23cec475de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Weather.WeatherSystem
+  profiles:
+  - {fileID: 11400000, guid: bb0984bc15502d64c8140f4eec1ac11f, type: 2}
+  - {fileID: 11400000, guid: 77e37c3d94716d647828aabd35b6e4d6, type: 2}
+  - {fileID: 11400000, guid: 8546a39ed5765e94bbd2415499fa3d7b, type: 2}
+  - {fileID: 11400000, guid: 6af963b72b5c1784fb3bfd7bb3ccc2af, type: 2}
+  - {fileID: 11400000, guid: 1aebc4ea53ed6024ab53589ce9bb5754, type: 2}
+  startingWeather: 0
+  defaultTransitionSeconds: 25

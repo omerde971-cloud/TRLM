@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69551e36afcdc0b409ee80357c6e2a1e, type: 3}
+  m_Name: SpeciesProfile_Bear
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.AI.Wildlife.WildlifeSpeciesProfile
+  speciesName: Bear
+  animalPrefab: {fileID: 7642705299726921945, guid: d5c718f368786de41a9a3459ea455063, type: 3}
+  minPopulation: 1
+  maxPopulation: 1
+  spawnChance: 0.15
+  spawnCooldownSeconds: 45
+  respawnDelaySeconds: 300
+  maxActiveAnimalsGlobally: 2
+  minDistanceFromPlayer: 30
+  despawnDistance: 150
+  preferredPatrolRadius: 30
+  aggressionModifier: 0.3
+  dayActivityMultiplier: 0.9
+  nightActivityMultiplier: 1.1
+  rainModifier: 1

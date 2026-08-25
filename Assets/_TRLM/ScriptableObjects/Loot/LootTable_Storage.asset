@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f324e6844390d1e45a8b61a0585fd708, type: 3}
+  m_Name: LootTable_Storage
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Inventory.LootTable
+  entries:
+  - item: {fileID: 11400000, guid: 1a2d6fbc01d4fcd41ad903cc886b8b01, type: 2}
+    weight: 2
+    minCount: 1
+    maxCount: 1
+  - item: {fileID: 11400000, guid: e20bd9e8d45cae04183743cd1992827b, type: 2}
+    weight: 3
+    minCount: 2
+    maxCount: 4
+  - item: {fileID: 11400000, guid: 5a2e9bcfe9ee5c740b3d58d65a48a82b, type: 2}
+    weight: 1.5
+    minCount: 1
+    maxCount: 2
+  guaranteedItems: []

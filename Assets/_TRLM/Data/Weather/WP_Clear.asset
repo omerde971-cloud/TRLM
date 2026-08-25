@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bee2978a6463940b7e3dac036301d1, type: 3}
+  m_Name: WP_Clear
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Weather.WeatherProfile
+  type: 0
+  rainIntensity: 0
+  windIntensity: 0.1
+  fogModifier: 0
+  visibilityModifier: 0
+  temperatureModifier: 0
+  audioIntensity: 0
+  isStorm: 0
+  minHoldSeconds: 180
+  maxHoldSeconds: 420
+  transitionWeight: 4

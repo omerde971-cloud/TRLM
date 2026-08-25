@@ -1,0 +1,20 @@
+{
+    "name": "TRLM.Runtime",
+    "rootNamespace": "TRLM",
+    "references": [
+        "Unity.InputSystem",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.Cinemachine",
+        "Unity.Timeline"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

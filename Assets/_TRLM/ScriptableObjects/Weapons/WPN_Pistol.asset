@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69dd4fafa3a3aa749aac3db476af7569, type: 3}
+  m_Name: WPN_Pistol
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Equipment.WeaponDefinition
+  weaponId: pistol_9mm
+  displayName: Pistol
+  category: 0
+  requiredAmmo: {fileID: 11400000, guid: 96ea64965d091da49bc8682ea7723202, type: 2}
+  magazineCapacity: 10
+  damage: 22
+  range: 40
+  pelletCount: 1
+  spreadAngleDegrees: 0
+  fireRateSeconds: 0.35
+  isAutomatic: 0
+  reloadSeconds: 1.6
+  recoilPitch: 2
+  recoilYawRandom: 0.8
+  baseSwayDegrees: 1.2
+  noiseLoudness: 65
+  placeholderVisualPrefab: {fileID: 0}

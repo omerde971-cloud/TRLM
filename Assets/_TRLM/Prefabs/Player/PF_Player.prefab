@@ -1,0 +1,996 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &567361789407005057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1843644341583032228}
+  - component: {fileID: 4825184602479564298}
+  m_Layer: 0
+  m_Name: PsychologicalVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1843644341583032228
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567361789407005057}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7868126084409052737}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4825184602479564298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567361789407005057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 10
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 0}
+--- !u!1 &1356696327362350577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7481805164879223832}
+  - component: {fileID: 3941041523250731584}
+  m_Layer: 8
+  m_Name: InteractionOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7481805164879223832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356696327362350577}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4624799607282010947}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3941041523250731584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356696327362350577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e467a1ebb8ebf104090345741086ebb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Interaction.InteractionOrigin
+  input: {fileID: 6527164942426775276}
+  raycastCamera: {fileID: 6868306518366783086}
+  interactionRange: 2.5
+  interactableMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!1 &4957083659244364302
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4217767272536909687}
+  - component: {fileID: 4956559660107825466}
+  - component: {fileID: 437928587845252368}
+  - component: {fileID: 8512016719601194548}
+  - component: {fileID: 478927797926949434}
+  - component: {fileID: 1140742880860320922}
+  - component: {fileID: 382419133737821539}
+  - component: {fileID: 2838128835179571121}
+  - component: {fileID: 510154297749072221}
+  - component: {fileID: 4494016653773965891}
+  - component: {fileID: 3649621420613483088}
+  - component: {fileID: 2701051231065061430}
+  - component: {fileID: 2962733970312925584}
+  - component: {fileID: 603327213853746759}
+  - component: {fileID: 8677838822526809007}
+  m_Layer: 8
+  m_Name: Systems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4217767272536909687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4624799607282010947}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4956559660107825466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8664de898dd40a49b7cd9f2ca73a108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Survival.StaminaSystem
+  maxStamina: 100
+  sprintDrainRate: 20
+  jumpCost: 10
+  regenRate: 15
+  regenDelay: 1.5
+--- !u!114 &437928587845252368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd9a3c45b5b74e448959eadee14166c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Survival.HealthSystem
+  maxHealth: 100
+  currentHealth: -1
+--- !u!114 &8512016719601194548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac5c2c9b285337a438231644a14665a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.UI.DebugHUD
+  health: {fileID: 437928587845252368}
+  stamina: {fileID: 4956559660107825466}
+  controller: {fileID: 1420654293947148188}
+  visible: 0
+--- !u!114 &478927797926949434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc5b8d3a9169544f81f9f45999c0227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.UI.InteractionPromptUI
+  interactionOrigin: {fileID: 3941041523250731584}
+--- !u!114 &1140742880860320922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44bd512832096e449b4b0acb99dff06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Inventory.PlayerInventory
+  dropPickupPrefab: {fileID: 0}
+  dropForwardOffset: 1
+  foodRestoreAmount: 30
+  waterRestoreAmount: 30
+  medicineHealAmount: 25
+  medicineInjurySeverityReduction: 2
+  medicinePoisonSeverityReduction: 2
+  bandageUseSeconds: 2
+  inventoryAudioSource: {fileID: 0}
+  backpackRustleClip: {fileID: 0}
+  bandageHandleClip: {fileID: 0}
+--- !u!114 &382419133737821539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d46feec0e000e478eb832f58c4b1ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Equipment.FlashlightController
+  input: {fileID: 6527164942426775276}
+  inventory: {fileID: 1140742880860320922}
+  spotLight: {fileID: 0}
+  batteryItem: {fileID: 11400000, guid: 5a2e9bcfe9ee5c740b3d58d65a48a82b, type: 2}
+  audioSource: {fileID: 0}
+  switchOnClip: {fileID: 0}
+  switchOffClip: {fileID: 0}
+  drainPerSecond: 1.2
+  lowBatteryThreshold: 20
+  flickerIntensityJitter: 0.4
+  flickerSpeed: 14
+  baseIntensity: 4
+  spotAngle: 45
+  range: 18
+--- !u!114 &2838128835179571121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60097b675e9604a4dbadf590a723bcc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Survival.StatusEffectController
+--- !u!114 &510154297749072221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f629ce2fb2ab2ec478a72d0c6e73261d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Survival.StaminaRegenModifier
+  minCombinedMultiplier: 0.2
+--- !u!114 &4494016653773965891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c495985918694479c3fe92d3bb8317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Survival.WetnessSystem
+  passiveDryPerSecond: 1.5
+  shelteredDryPerSecond: 6
+  fireWarmthRadius: 6
+  checkIntervalSeconds: 0.5
+  roofCheckHeight: 30
+  roofMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  maxWetPerSecondAtFullRain: 6
+--- !u!114 &3649621420613483088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a9ed097dbe63347b50547da3de9d6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Combat.RegionalInjurySystem
+  health: {fileID: 437928587845252368}
+  statusEffects: {fileID: 2838128835179571121}
+  movement: {fileID: 1420654293947148188}
+  weaponController: {fileID: 5547016574609879479}
+  staminaRegen: {fileID: 510154297749072221}
+  severityPerDamage: 0.6
+  bleedChanceTorso: 0.35
+  bleedChanceOther: 0.15
+  bleedSeverityPerHit: 1
+  armTraumaThreshold: 6
+  legTraumaThreshold: 6
+  legSprintBlockThreshold: 8
+  headBleedSeverityThreshold: 4
+  traumaDurationSeconds: 90
+--- !u!114 &2701051231065061430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06811ebac5435094cb4381fa6cf80dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Survival.ColdExposureSystem
+  timeSourceBehaviour: {fileID: 0}
+  movement: {fileID: 0}
+  nightDrainPerSecond: 0.4
+  wetnessDrainMultiplierAt100: 2.5
+  weatherDrainScale: 0.3
+  fireWarmPerSecond: 8
+  mildThreshold: 65
+  mildStaminaPenaltyMultiplier: 0.75
+  moderateThreshold: 40
+  moderateStaminaPenaltyMultiplier: 0.5
+  moderateSpeedMultiplier: 0.85
+  criticalThreshold: 15
+  criticalDamagePerTick: 2
+  criticalTickIntervalSeconds: 5
+--- !u!114 &2962733970312925584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b145fd57c0b91144fb1cf555c32391df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Combat.CombatTestHarness
+  injurySystem: {fileID: 3649621420613483088}
+--- !u!114 &603327213853746759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96833c22f01ed394f8d876d048fd6a84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Survival.PsychologicalState
+  health: {fileID: 0}
+  hunger: {fileID: 0}
+  thirst: {fileID: 0}
+  cold: {fileID: 0}
+  wetness: {fileID: 0}
+  injury: {fileID: 0}
+  weapon: {fileID: 0}
+  staminaRegen: {fileID: 0}
+  timeSourceBehaviour: {fileID: 0}
+  stressedThreshold: 40
+  criticalThreshold: 15
+  uneasyThreshold: 70
+  nightDrain: 0.3
+  lowHealthDrain: 0.5
+  seriousInjuryDrain: 0.4
+  lowHungerThirstDrain: 0.3
+  hypothermiaDrain: 0.5
+  isolationDrain: 0.2
+  maxDrainPerSecond: 1.5
+  shelterRecovery: 0.4
+  fireRecovery: 0.5
+  daylightRecovery: 0.15
+  wellFedRecovery: 0.1
+  companionRecoveryPerCompanion: 0.15
+  companionRecoveryCap: 3
+  companionDeathHit: 25
+  burialRecovery: 10
+  companionProximityRadius: 20
+  enablePerceptionEvents: 1
+  minPerceptionIntervalSeconds: 45
+  maxPerceptionIntervalSeconds: 120
+  perceptionEventRadius: 15
+  stressedSwayMultiplier: 1.3
+  criticalSwayMultiplier: 1.7
+  stressedStaminaMultiplier: 0.85
+  criticalStaminaMultiplier: 0.6
+--- !u!114 &8677838822526809007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4957083659244364302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d6eb7680e10fd41b006435e1e363de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Survival.PsychologicalVisualEffects
+  psychState: {fileID: 603327213853746759}
+  volume: {fileID: 4825184602479564298}
+  lerpSpeed: 0.5
+  stableVignette: 0
+  uneasyVignette: 0.06
+  stressedVignette: 0.14
+  criticalVignette: 0.24
+--- !u!1 &5841828789079175279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8607652361223148382}
+  - component: {fileID: 6868306518366783086}
+  - component: {fileID: 2906776825084665000}
+  - component: {fileID: 8252338768204937643}
+  m_Layer: 8
+  m_Name: MainCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8607652361223148382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841828789079175279}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7868126084409052737}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &6868306518366783086
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841828789079175279}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.05
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &2906776825084665000
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841828789079175279}
+  m_Enabled: 1
+--- !u!114 &8252338768204937643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841828789079175279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a40f84609010243b3c6c55d5e656ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Player.PlayerCamera
+  input: {fileID: 6527164942426775276}
+  bodyRoot: {fileID: 4624799607282010947}
+  sensitivity: 0.12
+  minPitch: -85
+  maxPitch: 85
+  rotationSmoothTime: 0.01
+  recoilRecoverySpeed: 6
+--- !u!1 &6382618050008495308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7868126084409052737}
+  m_Layer: 8
+  m_Name: CameraRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7868126084409052737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6382618050008495308}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8607652361223148382}
+  - {fileID: 1843644341583032228}
+  m_Father: {fileID: 4624799607282010947}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8550558353167679081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4624799607282010947}
+  - component: {fileID: 7964435509130485226}
+  - component: {fileID: 6527164942426775276}
+  - component: {fileID: 1420654293947148188}
+  - component: {fileID: 5868017142879063731}
+  - component: {fileID: 5547016574609879479}
+  - component: {fileID: 5080735272366717882}
+  - component: {fileID: 2947580108452297247}
+  - component: {fileID: 772314716307963939}
+  - component: {fileID: 1721628862692358709}
+  - component: {fileID: 7400702172164724490}
+  - component: {fileID: 39512471043735120}
+  m_Layer: 8
+  m_Name: PF_Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4624799607282010947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7868126084409052737}
+  - {fileID: 7481805164879223832}
+  - {fileID: 4217767272536909687}
+  - {fileID: 7091210128643999938}
+  - {fileID: 4383243491775398402}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &7964435509130485226
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.8
+  m_Radius: 0.35
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &6527164942426775276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169ce645acad17749bd92b9b350fdcbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Player.PlayerInputHandler
+--- !u!114 &1420654293947148188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae2afad5ff43b546aefda1f42888482, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Player.FirstPersonController
+  input: {fileID: 6527164942426775276}
+  stamina: {fileID: 4956559660107825466}
+  walkSpeed: 2.2
+  sprintSpeed: 4.2
+  crouchSpeed: 1.2
+  accelerationTime: 0.18
+  decelerationTime: 0.12
+  jumpHeight: 0.9
+  gravity: -18
+  groundedStickForce: -2
+  standingHeight: 1.8
+  crouchingHeight: 1.1
+  crouchTransitionSpeed: 8
+  slopeLimit: 45
+  slideFriction: 0.15
+--- !u!114 &5868017142879063731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8931efa60f932d34c8a538aaed4159e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Equipment.PlayerEquipment
+  hipMount: {fileID: 0}
+  backLeftMount: {fileID: 0}
+  backRightMount: {fileID: 0}
+  meleeMount: {fileID: 0}
+--- !u!114 &5547016574609879479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003167ddbf4925d4984b01b05919c5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Equipment.WeaponController
+  input: {fileID: 6527164942426775276}
+  equipment: {fileID: 5868017142879063731}
+  inventory: {fileID: 1140742880860320922}
+  playerCamera: {fileID: 8252338768204937643}
+  raycastCamera: {fileID: 6868306518366783086}
+  stamina: {fileID: 4956559660107825466}
+  movement: {fileID: 1420654293947148188}
+  hud: {fileID: 772314716307963939}
+  wheelUI: {fileID: 5080735272366717882}
+  aimSpeedMultiplier: 0.6
+--- !u!114 &5080735272366717882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9871be6e8d1102459d3eb442b04eb93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Equipment.EquipmentWheelUI
+  input: {fileID: 6527164942426775276}
+  equipment: {fileID: 5868017142879063731}
+  flashlight: {fileID: 382419133737821539}
+--- !u!114 &2947580108452297247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e29b997d3929ab46ac2dc5dd546e5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Core.FactionMember
+  faction: 0
+--- !u!114 &772314716307963939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec610dd2d4cefdc4780bec47391cd6d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.UI.GameplayHUD
+  health: {fileID: 437928587845252368}
+  stamina: {fileID: 4956559660107825466}
+  hunger: {fileID: 0}
+  thirst: {fileID: 0}
+  flashlight: {fileID: 382419133737821539}
+  inventory: {fileID: 1140742880860320922}
+  input: {fileID: 6527164942426775276}
+  objectiveSystem: {fileID: 0}
+  playerEquipment: {fileID: 5868017142879063731}
+  injurySystem: {fileID: 3649621420613483088}
+  statusEffects: {fileID: 2838128835179571121}
+  hungerThirstWarning: 40
+  notificationSeconds: 4
+--- !u!114 &1721628862692358709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc89c5d3a49d4a4dadbbfd184e692d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Combat.MeleeController
+  input: {fileID: 6527164942426775276}
+  equipment: {fileID: 5868017142879063731}
+  raycastCamera: {fileID: 6868306518366783086}
+  stamina: {fileID: 4956559660107825466}
+  playerCamera: {fileID: 8252338768204937643}
+  hud: {fileID: 772314716307963939}
+  wheelUI: {fileID: 5080735272366717882}
+  attackRadius: 0.35
+  staminaCost: 8
+  fallbackCooldownSeconds: 0.6
+  fallbackRange: 1.8
+  fallbackDamage: 18
+  cameraKickPitch: 1.2
+--- !u!114 &7400702172164724490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccaf0b6e9f3106488a4362c55638c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Player.PlayerBodyLocomotionAnimator
+  bodyAnimator: {fileID: 3785599696908030648}
+--- !u!114 &39512471043735120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550558353167679081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6dfb7add75713044b515c8018672de0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Player.PlayerVoidRecovery
+  killY: -30
+  sampleIntervalSeconds: 2
+--- !u!1001 &2518462028056257838
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4624799607282010947}
+    m_Modifications:
+    - target: {fileID: 4655127540503948780, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655127540503948780, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655127540503948780, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655127540503948780, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655127540503948780, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655127540503948780, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655127540503948780, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655127540503948780, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655127540503948780, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655127540503948780, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463294578005145430, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      propertyPath: m_Name
+      value: FirstPersonBody
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5463294578005145430, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6748055825413986578}
+  m_SourcePrefab: {fileID: 100100000, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+--- !u!95 &3785599696908030648 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1619740061440276374, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+  m_PrefabInstance: {fileID: 2518462028056257838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7091210128643999938 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4655127540503948780, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+  m_PrefabInstance: {fileID: 2518462028056257838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7575857930022031992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5463294578005145430, guid: 3099535839f0cb047bb17960888cb5c9, type: 3}
+  m_PrefabInstance: {fileID: 2518462028056257838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6748055825413986578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575857930022031992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca3beb16100ec743916469454897233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Player.FirstPersonBodyMask
+  invisibleMaterial: {fileID: 2100000, guid: 90d141843d7b1ae449943cec3ff617e2, type: 2}
+  alwaysHiddenSubmeshMaterialNames:
+  - Std_Skin_Head_Diffuse
+  - Std_Skin_Body_Diffuse
+  - Std_Skin_Leg_Diffuse
+  - Std_Eyelash_Diffuse
+  armSubmeshMaterialName: Std_Skin_Arm_Diffuse
+  hiddenAttachmentNames:
+  - CC_Base_Eye
+  - CC_Base_EyeOcclusion
+  - CC_Base_TearLine
+  - CC_Base_Teeth
+  - CC_Base_Tongue
+  armHidePitch: 35
+  cameraPivot: {fileID: 8607652361223148382}
+--- !u!1001 &2731789155417339567
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4624799607282010947}
+    m_Modifications:
+    - target: {fileID: 1818657619372078253, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818657619372078253, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818657619372078253, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818657619372078253, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818657619372078253, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818657619372078253, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818657619372078253, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818657619372078253, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818657619372078253, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1818657619372078253, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8514581885352071173, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+      propertyPath: m_Name
+      value: RainVFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+--- !u!4 &4383243491775398402 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1818657619372078253, guid: 50d1c3c129ae9e34cb4a3805b83dec1b, type: 3}
+  m_PrefabInstance: {fileID: 2731789155417339567}
+  m_PrefabAsset: {fileID: 0}

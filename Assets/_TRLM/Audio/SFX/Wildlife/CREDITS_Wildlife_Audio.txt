@@ -1,0 +1,225 @@
+﻿TRLM GAME - AUDIO ASSET LICENSE & ATTRIBUTION
+===============================================
+
+DOWNLOAD STATUS REPORT
+======================
+
+REAL AUDIO FILES DOWNLOADED (5 from Freesound.org CC0):
+  [READY] bear_growl_01.mp3 (74.9 KB) - CC0
+  [READY] bear_roar_01.mp3 (204 KB) - CC0  
+  [READY] bear_breath_01.mp3 (84.8 KB) - CC0
+  [READY] deer_alert_01.mp3 (5888.5 KB) - CC0
+  [READY] rustle_01.mp3 (977.6 KB) - CC0
+
+PLACEHOLDER FILES (50 KB each - MUST BE REPLACED):
+  [PLACEHOLDER] deer_bleat_01.mp3 - Replace with real audio
+  [PLACEHOLDER] rustle_02.mp3 - Replace with real audio
+  [PLACEHOLDER] waves_loop_01.mp3 - Replace with real audio
+  [PLACEHOLDER] wind_gust_loop_01.mp3 - Replace with real audio
+  [PLACEHOLDER] wood_creak_01.mp3 - Replace with real audio
+  [PLACEHOLDER] wood_creak_02.mp3 - Replace with real audio
+  [PLACEHOLDER] bird_call_01.mp3 - Replace with real audio
+  [PLACEHOLDER] bird_call_02.mp3 - Replace with real audio
+
+
+INSTRUCTIONS FOR REPLACING PLACEHOLDERS
+========================================
+
+The following 8 files contain minimal placeholder audio and MUST be replaced with 
+real audio files before using in the game:
+
+1. deer_bleat_01.mp3
+   - Search Freesound.org for "deer bleat" with CC0 filter
+   - Download and save over this file
+   - License must be CC0 or compatible (CC-BY with attribution OK)
+
+2. rustle_02.mp3
+   - Search for "animal movement" or "small animal"
+   - Need second wildlife sound for variety
+
+3. waves_loop_01.mp3
+   - Search for "ocean waves" or "beach waves"
+   - Should be loopable (15-30 seconds recommended)
+   - Loop flag: YES
+
+4. wind_gust_loop_01.mp3
+   - Search for "wind ambient" or "gusty wind"
+   - Should be loopable for background ambience
+   - Loop flag: YES
+
+5. wood_creak_01.mp3
+   - Search for "wooden creak" or "floor creak"
+   - Short SFX sound (1-3 seconds)
+
+6. wood_creak_02.mp3
+   - Second wooden creak variant for variety
+   - Different tone/pitch from wood_creak_01
+
+7. bird_call_01.mp3
+   - Search for "bird call" or "single bird"
+   - NOT a loop - single bird sound call
+   - 1-3 seconds duration
+
+8. bird_call_02.mp3
+   - Second bird call for variety
+   - Different bird species or different call sound
+
+
+REAL AUDIO FILES - ATTRIBUTION & LICENSE
+==========================================
+
+BEAR SOUNDS:
+
+File: bear_growl_01.mp3
+Description: Bear aggressive growl
+Size: 74.9 KB
+Author/Creator: Piddipop
+Source: https://freesound.org/people/Piddipop/sounds/728102/
+License: CC0 1.0 Universal (Public Domain)
+Status: READY FOR USE
+
+File: bear_roar_01.mp3
+Description: Bear roar (powerful)
+Size: 204 KB
+Author/Creator: Asteroiderer
+Source: https://freesound.org/people/Asteroiderer/sounds/439441/
+License: CC0 1.0 Universal (Public Domain)
+Status: READY FOR USE
+
+File: bear_breath_01.mp3
+Description: Bear huffing/breathing
+Size: 84.8 KB
+Author/Creator: Christopherderp
+Source: https://freesound.org/people/Christopherderp/sounds/342203/
+License: CC0 1.0 Universal (Public Domain)
+Status: READY FOR USE
+
+DEER SOUNDS:
+
+File: deer_alert_01.mp3
+Description: Deer alert/snort (long recording)
+Size: 5888.5 KB
+Author/Creator: thaighaudio
+Source: https://freesound.org/people/thaighaudio/sounds/121532/
+License: CC0 1.0 Universal (Public Domain)
+Note: This is a longer recording (~5-10 minutes). For game use, consider 
+      trimming to first 3-5 seconds in audio editor
+Status: READY (may need trimming)
+
+WILDLIFE SOUNDS:
+
+File: rustle_01.mp3
+Description: Animal rustling/movement in underbrush
+Size: 977.6 KB
+Author/Creator: BassmanJourney
+Source: https://freesound.org/people/BassmanJourney/sounds/591377/
+License: CC0 1.0 Universal (Public Domain)
+Status: READY FOR USE
+
+
+LEGAL INFORMATION
+=================
+
+All REAL audio files use CC0 1.0 Universal License:
+- FREE for commercial use
+- FREE for modification
+- FREE for redistribution  
+- NO attribution required (but appreciated)
+- Can be used in any context
+
+For detailed license: https://creativecommons.org/publicdomain/zero/1.0/
+
+ATTRIBUTION FORMAT (optional but appreciated):
+"[Sound Name]" by [Creator Name] (freesound.org)
+
+Example:
+"Bear growl" by Piddipop (freesound.org)
+
+
+HOW TO REPLACE PLACEHOLDER FILES
+=================================
+
+Method 1 - Web Browser (Easiest):
+  1. Go to https://freesound.org/search/
+  2. Search for sound (e.g., "deer bleat")
+  3. Add filter: License = "Creative Commons 0"
+  4. Click on desired sound
+  5. Click "Download" button
+  6. Rename downloaded file to match placeholder name
+  7. Replace placeholder file in scratchpad/audio/ directory
+
+Method 2 - Direct URL Download:
+  1. Find Freesound.org sound page URL
+  2. Extract preview URL from page HTML
+  3. Use PowerShell: 
+     Invoke-WebRequest -Uri [preview_url] -OutFile [filename].mp3
+  4. Verify file is >20KB and valid MP3
+  5. Replace placeholder
+
+Method 3 - Alternative Sources:
+  - OpenGameArt.org (filter CC0)
+  - Zapsplat.com (free license)
+  - Pixabay Sound Effects (free license)
+  - Kenney.nl audio packs (CC0)
+
+Verify downloaded files:
+  - Minimum size: 20 KB
+  - Format: MP3 or OGG Vorbis
+  - Should start with: ID3 tag or 0xFFFB (MP3 sync)
+  - NOT HTML error page
+
+
+UNITY INTEGRATION
+=================
+
+1. Replace placeholder MP3 files with real audio
+2. In Unity Editor:
+   - Create: Assets/Audio/ folder
+   - Copy all 13 .mp3 files there
+3. Import settings (Inspector):
+   - Audio Clip format: PCM
+   - Load type: Decompress on Load (SFX) or Compressed (loops)
+   - Channels: Mono/Stereo as needed
+4. Create AudioManager script
+5. Assign clips to AudioSources
+6. Set volume levels:
+   - SFX: 0.7-1.0
+   - Ambient: 0.3-0.6
+
+Example audio manager usage:
+  audioManager.PlaySFX("bear_growl_01");
+  audioManager.PlayLoop("ocean_waves_loop_01", 0.4f);
+
+
+FILE INVENTORY SUMMARY
+====================
+
+Total Files: 13
+Downloaded (Real Audio): 5 files (7.2 MB)
+Placeholders (To Replace): 8 files (400 KB)
+Total Current Size: 7.6 MB
+
+When all placeholders are replaced with real audio:
+Expected Total: ~7-10 MB (depending on downloaded file sizes)
+
+
+NEXT STEPS
+==========
+
+1. Download real audio files for the 8 placeholder files
+2. Replace placeholder files in scratchpad/audio/
+3. Verify all files in Unity project
+4. Adjust volume levels and looping as needed
+5. Test in game scenarios
+
+
+NOTES FOR DEVELOPERS
+====================
+
+- SFX (growl, roar, breathing, calls, creaks): Non-looping, high priority
+- Ambient (ocean, wind): Looping, lower volume, set to ambient channel
+- Layer multiple sounds for richness (e.g., wind + ocean)
+- Consider audio ducking when multiple sounds play
+- Test audio levels on different devices/headphones
+- Consider adding audio event prefabs for easy reuse
+
