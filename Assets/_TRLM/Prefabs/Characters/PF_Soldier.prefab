@@ -84,6 +84,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: 22ebdb31f4b716745aa512ed78df72c6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9000496087922163020}
+    - targetCorrespondingSourceObject: {fileID: 8771091787928289351, guid: 22ebdb31f4b716745aa512ed78df72c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5687257220525786239}
   m_SourcePrefab: {fileID: -4161369568681901532, guid: 22ebdb31f4b716745aa512ed78df72c6, type: 3}
 --- !u!4 &359738476739252139 stripped
 Transform:
@@ -156,6 +159,23 @@ MonoBehaviour:
   attackCooldownSeconds: 1.2
   damage: 8
   searchDurationSeconds: 7
+--- !u!114 &5687257220525786239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726955533505116313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 546612230c306864aad18ec6c43d16fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.AI.Human.HumanoidLocomotion
+  animator: {fileID: 0}
+  referenceSpeed: 1.4
+  minPlaybackSpeed: 0.06
+  maxPlaybackSpeed: 1.6
+  damp: 8
 --- !u!1001 &6538259490037684544
 PrefabInstance:
   m_ObjectHideFlags: 0
