@@ -42,7 +42,14 @@ unverified is left intentionally generic.
 | Unity Starter Assets (Third Person Controller) | Template / controller | Unity Technologies | Unity-provided starter package. |
 | Wildlife SFX (bear / deer / rustle) | Audio (SFX) | Freesound.org contributors — **CC0 1.0** | CC0 public domain. Excluded here for a clean code-only release; see `Assets/_TRLM/Audio/SFX/Wildlife/CREDITS_Wildlife_Audio.txt` for per-file attribution. |
 | Other SFX (combat / environment / interaction / movement / weather) | Audio (SFX) | Origin not fully verified | Excluded pending license verification. |
+| Gobkit Free Animal Pack (Boar, Goat low-poly rigged) | Wildlife / models | **Gobkit** — gobkit.com — **CC0 1.0** | CC0 public domain. `PF_Boar` / `PF_MountainGoat` reference these meshes (excluded binaries). |
+| Poly Haven — cave/cliff PBR textures (`cliff_side`, `brown_mud_rocks_01`) & rock models (`boulder_01`, `coastal_cliff_01`) | Environment / textures + models | **Poly Haven** — polyhaven.com — **CC0 1.0** | CC0 public domain. Cave `Sprint11` materials reference these maps (excluded binaries). |
+| Cave ambience / drips / impacts / creature & shotgun SFX | Audio (SFX) | **Kenney** (kenney.nl) + OpenGameArt contributors (JaggedStone, qubodup, rubberduck, zer0_sol) — **CC0 1.0** | CC0 public domain; excluded here per the audio-binary exclusion policy. |
 | Voice-over (VO) & music | Audio | Managed separately | Not generated/committed; excluded from OSS release. |
+
+## Open-source package dependencies (fetched via UPM, not redistributed here)
+
+* **glTF Fast (`com.unity.cloud.gltfast`)** — Unity Technologies / Andreas Atteneder — **Apache-2.0**. Declared in `Packages/manifest.json`; the Unity Package Manager fetches it automatically on project open. Required to import the CC0 `.glb`/`.gltf` models referenced above. Its source is not copied into this repository.
 
 For fuller technical detail on the third-party assets and how they were integrated, see
 `Documents/AssetRegistry.md` and `Documents/P0_Asset_Audit.md`, which are included in this

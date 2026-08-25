@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpeciesProfile_Boar
   m_EditorClassIdentifier: TRLM.Runtime::TRLM.AI.Wildlife.WildlifeSpeciesProfile
   speciesName: Boar
-  animalPrefab: {fileID: 0}
+  animalPrefab: {fileID: 2902242919218968618, guid: 1967c5ce5602de84db7dac20349d2bbb, type: 3}
   minPopulation: 1
   maxPopulation: 4
   spawnChance: 0.55

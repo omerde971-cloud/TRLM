@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpeciesProfile_MountainGoat
   m_EditorClassIdentifier: TRLM.Runtime::TRLM.AI.Wildlife.WildlifeSpeciesProfile
   speciesName: MountainGoat
-  animalPrefab: {fileID: 0}
+  animalPrefab: {fileID: 229813348701909181, guid: cc43803cc2bf60146a711c73583f8cc6, type: 3}
   minPopulation: 1
   maxPopulation: 4
   spawnChance: 0.6

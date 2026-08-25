@@ -1,0 +1,236 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &229813348701909181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4009714391104148323}
+  - component: {fileID: 903003240747451741}
+  - component: {fileID: 6814151252520827148}
+  - component: {fileID: 6370414758788336005}
+  - component: {fileID: 8819267251178492815}
+  - component: {fileID: 4601340451506239645}
+  - component: {fileID: 2787729794281080968}
+  m_Layer: 0
+  m_Name: PF_MountainGoat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4009714391104148323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229813348701909181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1704348526701192415}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &903003240747451741
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229813348701909181}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.50248796
+  m_Speed: 1.2
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 200
+  m_StoppingDistance: 0.3
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!65 &6814151252520827148
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229813348701909181}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0049759, y: 1, z: 1.096044}
+  m_Center: {x: 0, y: 0.4896381, z: 0}
+--- !u!114 &6370414758788336005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229813348701909181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd9a3c45b5b74e448959eadee14166c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.Survival.HealthSystem
+  maxHealth: 100
+  currentHealth: -1
+--- !u!114 &8819267251178492815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229813348701909181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b51664c3904cd364bbbf54fb38cb50c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.AI.Wildlife.PassiveWildlifeAI
+  wanderSpeed: 1.2
+  fleeSpeed: 6
+  playerAlertDistance: 18
+  playerFleeDistance: 11
+  predatorFleeDistance: 26
+  senseInterval: 0.35
+  grazeDurationRange: {x: 4, y: 11}
+  alertDuration: 2.2
+  fleeDistance: 30
+  relocateDistance: 45
+--- !u!114 &4601340451506239645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229813348701909181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f693a15e39e01ea4c914a7d824a8825c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.AI.Wildlife.AnimalLocomotionAnimator
+  animator: {fileID: 0}
+  speedDampTime: 0.15
+--- !u!114 &2787729794281080968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 229813348701909181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d330e99548e89fe42bc7b2766a82c20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TRLM.Runtime::TRLM.AI.Wildlife.AnimalAudioController
+  source: {fileID: 0}
+  growl: {fileID: 0}
+  roar: {fileID: 0}
+  attack: {fileID: 0}
+  pain: {fileID: 0}
+  alertCall: {fileID: 0}
+  fleeCall: {fileID: 0}
+  idleAmbient: []
+  idleAmbientInterval: {x: 12, y: 28}
+  idleAmbientMaxPlayerDistance: 24
+  growlCooldown: 6
+  roarCooldown: 4
+  callCooldown: 7
+--- !u!1001 &6614987029085851927
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4009714391104148323}
+    m_Modifications:
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.21805964
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.21805964
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.21805964
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1381789280324619678, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_WrapMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242888416370347441, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+      propertyPath: m_Name
+      value: Model
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: -3199799093341109342, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+--- !u!4 &1704348526701192415 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3717114202187975224, guid: c3bef1926af928e439d5790c655781cc, type: 3}
+  m_PrefabInstance: {fileID: 6614987029085851927}
+  m_PrefabAsset: {fileID: 0}
